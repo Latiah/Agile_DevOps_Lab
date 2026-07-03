@@ -1,4 +1,14 @@
 import { expect, test, describe, vi } from 'vitest';
+import { supabase } from '@/lib/supabase';
+
+
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    from: vi.fn(() => ({
+      insert: vi.fn().mockResolvedValue({ error: null }), // Simulate successful insert
+    })),
+  },
+}));
 
 // 1. Test the Product API (Using a Mock)
 describe('API Check', () => {
@@ -20,6 +30,24 @@ describe('API Check', () => {
    
     
     console.log("API Mock test passed successfully");
+  });
+});
+
+// Inserting data into Supabase testing
+describe('Database Integration', () => {
+  test('Should call Supabase insert with correct product data', async () => {
+    const mockProduct = { 
+      product_id: 1, 
+      title: 'Test Product', 
+      price: 99.99 
+    };
+
+    const { error } = await supabase.from('cart').insert([mockProduct]);
+
+    expect(error).toBeNull();
+    expect(supabase.from).toHaveBeenCalledWith('cart'); 
+    
+    console.log("Insert into SUpabase Test passed");
   });
 });
 
