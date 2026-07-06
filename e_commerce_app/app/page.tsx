@@ -53,7 +53,6 @@ export default function Home() {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Product Catalog */}
         <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map(p => (
             <div key={p.id} className="border rounded-xl p-4 flex flex-col justify-between shadow-sm">
@@ -70,7 +69,6 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Sidebar Cart  */}
         <div className="bg-black-50 p-4 rounded-xl border h-fit">
           <h2 className="text-xl font-bold mb-4">Your Cart</h2>
           {cart.length === 0 ? <p className="text-gray-500 text-sm">Empty</p> : (
