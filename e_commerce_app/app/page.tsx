@@ -69,7 +69,6 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Sidebar Cart  */}
         <div className="bg-black-50 p-4 rounded-xl border h-fit">
           <h2 className="text-xl font-bold mb-4">Your Cart</h2>
           {cart.length === 0 ? <p className="text-gray-500 text-sm">Empty</p> : (
